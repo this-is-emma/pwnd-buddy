@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"github.com/joho/godotenv"
 )
 
 // ANSI color escape codes
@@ -30,6 +31,13 @@ type Breach struct {
 }
 
 func main() {
+	err := godotenv.Load()
+    if err != nil {
+        fmt.Println("Error loading .env file:", err)
+        return
+    }
+
+	API_KEY := os.Getenv("API_KEY")
 	// Define flags for email and saveToFile
 	var email string
 	saveToFile := flag.Bool("s", false, "save API output to file")
@@ -47,7 +55,7 @@ func main() {
 		fmt.Println("Error creating request:", err)
 		return
 	}
-	req.Header.Add("hibp-api-key", "79acc9218ca14abaa678b6c4c9e99327")
+	req.Header.Add("hibp-api-key", API_KEY)
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		fmt.Println("Error making request:", err)
