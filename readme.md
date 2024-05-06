@@ -3,11 +3,13 @@
 PWND-BUDDY is a tool to help you checked if your email address is part of a previous leak. It is super easy to use,
 here are a few steps to get you started:
 
-Build the tool:
+- Create an `.env` file with your HaveIBeenPwnd API Key
+
+- Build the tool:
 
 `go build main.go`
 
-run the execurtable
+- run the execurtable
 
 `./main -email="<YOUR-EMAIL@ADDRESS.COM>" -s`
 
