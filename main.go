@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/joho/godotenv"
 	"io"
 	"net/http"
 	"os"
-	"github.com/joho/godotenv"
 )
 
 // ANSI color escape codes
@@ -32,10 +32,10 @@ type Breach struct {
 
 func main() {
 	err := godotenv.Load()
-    if err != nil {
-        fmt.Println("Error loading .env file:", err)
-        return
-    }
+	if err != nil {
+		fmt.Println("Error loading .env file:", err)
+		return
+	}
 
 	API_KEY := os.Getenv("API_KEY")
 	// Define flags for email and saveToFile
